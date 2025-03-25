@@ -7,7 +7,8 @@ import {
   deleteFavorite,
   getSharedFavorite,
   acceptSharedFavorite,
-  getRecommendations
+  getRecommendations,
+  getUpcomingReleases
 } from '../controllers/contentController.js';
 import { authenticate } from '../middleware/auth.js';
 
@@ -24,5 +25,7 @@ router.get('/shared/:id', getSharedFavorite);
 router.post('/shared/:id', acceptSharedFavorite);
 router.get('/recommendations', getRecommendations);
 router.get('/reminders', getUpcomingReleases);
+router.get('/reminders', getUpcomingReleases);
+
 
 export default router;
