@@ -10,7 +10,8 @@ const SharedView = () => {
   useEffect(() => {
     const fetchShared = async () => {
       try {
-        const res = await axios.get(\`http://localhost:5000/api/content/shared/\${id}\`);
+        const res = await axios.get(`http://localhost:5000/api/content/shared/${id}`);
+
         setFavorite(res.data);
       } catch (err) {
         console.error(err);

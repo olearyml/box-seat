@@ -7,7 +7,8 @@ const Search = () => {
 
   const handleSearch = async () => {
     try {
-      const res = await axios.get(\`http://localhost:5000/api/content/search?query=\${query}\`);
+      const res = await axios.get(`http://localhost:5000/api/content/search?query=${query}`);
+
       setResults(res.data);
     } catch (err) {
       alert('Search failed');

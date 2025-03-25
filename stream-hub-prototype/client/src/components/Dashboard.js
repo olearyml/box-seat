@@ -16,7 +16,8 @@ const Dashboard = () => {
 
     try {
       const res = await axios.get('http://localhost:5000/api/content/favorites', {
-        headers: { Authorization: \`Bearer \${token}\` }
+        headers: { Authorization: `Bearer ${token}` }
+
       });
       const all = res.data;
       const allGenres = Array.from(new Set(all.flatMap(fav => (fav.genres || '').split(', ').filter(Boolean))));
