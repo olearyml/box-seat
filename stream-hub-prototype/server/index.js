@@ -1,21 +1,22 @@
 import express from 'express';
 import cors from 'cors';
+// import authRoutes from './routes/auth.js'; // Uncomment if you have auth routes
 
 const app = express();
 
-// If you want to allow requests from *any* domain:
-app.use(cors());
-
-// If you want to allow only your Vercel domain:
+// Use either ANY domain or only your Vercel domain, not both:
 app.use(cors({
   origin: 'https://box-seat.vercel.app'
 }));
 
 app.use(express.json());
 
-// ... your routes, e.g.
+// If you have routes, mount them here:
+app.use('/api/auth', authRoutes);
+app.use('/api/content', contentRoutes);
 // app.use('/api/auth', authRoutes);
 
-app.listen(5000, () => {
-  console.log('Server running on port 5000');
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log('Server running on port', PORT);
 });
