@@ -34,7 +34,7 @@ const Dashboard = () => {
     const token = localStorage.getItem('token');
     try {
       const res = await axios.get('http://localhost:5000/api/content/recommendations', {
-        headers: { Authorization: \`Bearer \${token}\` }
+        headers: { Authorization: \`Bearer \${token}` }
       });
       setRecommendations(res.data);
     } catch (err) {

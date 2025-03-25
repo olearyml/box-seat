@@ -23,7 +23,7 @@ const Search = () => {
         title: item.title || item.name,
         tags: ""
       }, {
-        headers: { Authorization: \`Bearer \${token}\` }
+        headers: { Authorization: \`Bearer \${token}` }
       });
       alert('Added to favorites!');
     } catch (err) {

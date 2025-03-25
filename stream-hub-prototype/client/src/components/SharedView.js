@@ -26,9 +26,10 @@ const SharedView = () => {
     if (!token) return alert('You must be logged in to save this favorite.');
 
     try {
-      await axios.post(\`http://localhost:5000/api/content/shared/\${id}\`, {}, {
-        headers: { Authorization: \`Bearer \${token}\` }
-      });
+      await axios.post(`http://localhost:5000/api/content/shared/${id}`, {}, {
+  headers: { Authorization: `Bearer ${token}` }
+});
+
       alert('Added to your favorites!');
       navigate('/dashboard');
     } catch (err) {
