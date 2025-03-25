@@ -1,6 +1,5 @@
-
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../services/api'; // import your shared api
 
 const SharedView = ({ id, token }) => {
   const [sharedItem, setSharedItem] = useState(null);
@@ -8,19 +7,19 @@ const SharedView = ({ id, token }) => {
   useEffect(() => {
     const fetchShared = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/content/shared/${id}`);
+        const res = await api.get(`/content/shared/${id}`);
         setSharedItem(res.data);
       } catch (err) {
         alert("Could not load shared content");
       }
     };
 
-    fetchShared();
+    if (id) fetchShared();
   }, [id]);
 
   const shareAgain = async () => {
     try {
-      await axios.post(`http://localhost:5000/api/content/shared/${id}`, {}, {
+      await api.post(`/content/shared/${id}`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       alert("Shared successfully!");

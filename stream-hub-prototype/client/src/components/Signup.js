@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import api from '../services/api'; // import your shared api
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -7,7 +7,7 @@ const Signup = () => {
 
   const handleSignup = async () => {
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/signup', { email, password });
+      const res = await api.post('/auth/signup', { email, password });
       localStorage.setItem('token', res.data.token);
       alert('Signed up!');
     } catch (err) {
@@ -18,9 +18,22 @@ const Signup = () => {
   return (
     <div className="p-4 max-w-md mx-auto">
       <h2 className="text-xl mb-4">Signup</h2>
-      <input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="w-full p-2 mb-2 border" />
-      <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="w-full p-2 mb-2 border" />
-      <button onClick={handleSignup} className="w-full bg-green-500 text-white p-2">Signup</button>
+      <input
+        placeholder="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="w-full p-2 mb-2 border"
+      />
+      <input
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        className="w-full p-2 mb-2 border"
+      />
+      <button onClick={handleSignup} className="w-full bg-green-500 text-white p-2">
+        Signup
+      </button>
     </div>
   );
 };
